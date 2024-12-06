@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Steam™ - Neue Serie hinzufügen</title>
+    <meta charset="UTF-8"></meta>
+    <h:outputStylesheet name="style.css"/>
+        <h:outputScript name="script.js"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+</h:head>
+<h:body>
+<aside class="steam-sidebar">
+    <h:link outcome="overview" class="steam-logo"><h:graphicImage library="images" name="steam_tm.png" /></h:link>
+
+    <button class="steam-mobilemenu"><img src="resources/images/mobile.svg" alt="Menü"></img>
+    </button>
+    <div class="steam-navarea">
+        <div class="steam-avatar">
+            <h:graphicImage class="steam-useravatar" library="images" name="default-avatar.svg" />
+                <span class="steam-username"> #{loginData.username}  </span>
+        </div>
+        <nav class="steam-mainnavi">
+            <h:form>
+            <ul>
+                <li><h:commandLink action="#{navigationController.moveToOverview}" value="Meine Serien"></h:commandLink></li>
+                <li><h:commandLink action="#{navigationController.moveToSearch}" value="Serien suchen"></h:commandLink></li>
+                <li><h:commandLink action="#{navigationController.moveToAdd}" value="Serie hinzufügen"></h:commandLink></li>
+            </ul>
+            </h:form>
+        </nav>
+    </div>
+</aside>
+<main class="steam-main">
+    <h1>Neue Serie hinzufügen</h1>
+    <h:form  id="show">
+        <div class="steam-inputblock">
+            <label class="steam-inputframe">
+                <h:inputText required="required" class="steam-form" value="#{showData.showname}" a:placeholder="Serientitel"></h:inputText>
+            </label>
+            <label class="steam-inputframe">
+                <h:inputText required="required"  class="steam-form" value="#{showData.numberOfSeasons}" a:placeholder="Anzahl der Staffeln" converterMessage="Please enter digits only." ></h:inputText>
+            </label>
+        </div>
+        <h3>Wähle die passenden Genres aus:</h3>
+        <div class="steam-genrebox">
+            <h:selectOneRadio value = "#{showData.genre}"> 
+                <f:selectItem itemValue = "Drama" itemLabel = "Drama" />
+                <f:selectItem itemValue = "Comedy" itemLabel = "Comedy" />
+                <f:selectItem itemValue = "ScienceFiction" itemLabel = "Science Fiction" />
+                <f:selectItem itemValue = "Action" itemLabel = "Action" />
+             </h:selectOneRadio>  
+        </div>
+        <h3>Wähle die Streaming-Plattformen aus:</h3>
+        <div class="steam-genrebox">
+            <h:selectOneRadio value = "#{showData.streamprovider}"> 
+                <f:selectItem itemValue = "AmazonPrime" itemLabel = "Prime Video" /> 
+                <f:selectItem itemValue = "Netflix" itemLabel = "Netflix" />
+                <f:selectItem itemValue = "Sky" itemLabel = "Sky" />
+             </h:selectOneRadio>  
+        </div>
+        <h3>Deine persönliche Bewertung:</h3>
+        <div class="steam-genrebox">
+            <h:selectOneRadio value = "#{showData.rating}"> 
+                <f:selectItem itemValue = "bad" itemLabel = "one" /> 
+                <f:selectItem itemValue = "mediocre" itemLabel = "two" />
+                <f:selectItem itemValue = "good" itemLabel = "three" />
+                <f:selectItem itemValue = "very_good" itemLabel = "four" />
+             </h:selectOneRadio>  
+<!--
+            <label class="steam-star" title="4 Sterne" for="four" onclick="fillStars(this);">
+                <svg class="steam-star-inactive" enable-background="new 0 0 55.867 55.867" version="1.1" viewBox="0 0 55.867 55.867" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.071 53.293c-0.19725 0-0.39451-0.06098-0.56031-0.18199-0.2935-0.21344-0.44025-0.57456-0.37831-0.93187l2.9455-17.168-12.475-12.157c-0.25919-0.25345-0.35258-0.63173-0.24109-0.9757 0.11244-0.34492 0.41071-0.59647 0.76995-0.64888l17.238-2.505 7.71-15.62c0.16009-0.32587 0.4917-0.53168 0.85381-0.53168 0.36306 0 0.69467 0.20581 0.85381 0.53168l7.7091 15.62 17.239 2.505c0.35925 0.05241 0.65656 0.303 0.76995 0.64888 0.11149 0.34397 0.01906 0.7232-0.24109 0.9757l-12.475 12.159 2.9445 17.167c0.06099 0.35731-0.08576 0.71844-0.37831 0.93187-0.2935 0.21534-0.68324 0.24297-1.0044 0.07241l-15.418-8.1048-15.42 8.1048c-0.13913 0.07241-0.29159 0.10862-0.4431 0.10862z" stroke-width="2"/>
+            </svg>
+            </label>
+            <label class="steam-star" title="3 Sterne" for="three" onclick="fillStars(this);">
+                <svg class="steam-star-inactive" enable-background="new 0 0 55.867 55.867" version="1.1" viewBox="0 0 55.867 55.867" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.071 53.293c-0.19725 0-0.39451-0.06098-0.56031-0.18199-0.2935-0.21344-0.44025-0.57456-0.37831-0.93187l2.9455-17.168-12.475-12.157c-0.25919-0.25345-0.35258-0.63173-0.24109-0.9757 0.11244-0.34492 0.41071-0.59647 0.76995-0.64888l17.238-2.505 7.71-15.62c0.16009-0.32587 0.4917-0.53168 0.85381-0.53168 0.36306 0 0.69467 0.20581 0.85381 0.53168l7.7091 15.62 17.239 2.505c0.35925 0.05241 0.65656 0.303 0.76995 0.64888 0.11149 0.34397 0.01906 0.7232-0.24109 0.9757l-12.475 12.159 2.9445 17.167c0.06099 0.35731-0.08576 0.71844-0.37831 0.93187-0.2935 0.21534-0.68324 0.24297-1.0044 0.07241l-15.418-8.1048-15.42 8.1048c-0.13913 0.07241-0.29159 0.10862-0.4431 0.10862z" stroke-width="2"/>
+            </svg>
+            </label>
+            <label class="steam-star" title="2 Sterne" for="two" onclick="fillStars(this);">
+                <svg class="steam-star-inactive" enable-background="new 0 0 55.867 55.867" version="1.1" viewBox="0 0 55.867 55.867" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.071 53.293c-0.19725 0-0.39451-0.06098-0.56031-0.18199-0.2935-0.21344-0.44025-0.57456-0.37831-0.93187l2.9455-17.168-12.475-12.157c-0.25919-0.25345-0.35258-0.63173-0.24109-0.9757 0.11244-0.34492 0.41071-0.59647 0.76995-0.64888l17.238-2.505 7.71-15.62c0.16009-0.32587 0.4917-0.53168 0.85381-0.53168 0.36306 0 0.69467 0.20581 0.85381 0.53168l7.7091 15.62 17.239 2.505c0.35925 0.05241 0.65656 0.303 0.76995 0.64888 0.11149 0.34397 0.01906 0.7232-0.24109 0.9757l-12.475 12.159 2.9445 17.167c0.06099 0.35731-0.08576 0.71844-0.37831 0.93187-0.2935 0.21534-0.68324 0.24297-1.0044 0.07241l-15.418-8.1048-15.42 8.1048c-0.13913 0.07241-0.29159 0.10862-0.4431 0.10862z" stroke-width="2"/>
+            </svg>
+            </label>
+            <label class="steam-star" title="1 Stern" for="one" onclick="fillStars(this);">
+                <svg class="steam-star-inactive" enable-background="new 0 0 55.867 55.867" version="1.1" viewBox="0 0 55.867 55.867" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.071 53.293c-0.19725 0-0.39451-0.06098-0.56031-0.18199-0.2935-0.21344-0.44025-0.57456-0.37831-0.93187l2.9455-17.168-12.475-12.157c-0.25919-0.25345-0.35258-0.63173-0.24109-0.9757 0.11244-0.34492 0.41071-0.59647 0.76995-0.64888l17.238-2.505 7.71-15.62c0.16009-0.32587 0.4917-0.53168 0.85381-0.53168 0.36306 0 0.69467 0.20581 0.85381 0.53168l7.7091 15.62 17.239 2.505c0.35925 0.05241 0.65656 0.303 0.76995 0.64888 0.11149 0.34397 0.01906 0.7232-0.24109 0.9757l-12.475 12.159 2.9445 17.167c0.06099 0.35731-0.08576 0.71844-0.37831 0.93187-0.2935 0.21534-0.68324 0.24297-1.0044 0.07241l-15.418-8.1048-15.42 8.1048c-0.13913 0.07241-0.29159 0.10862-0.4431 0.10862z" stroke-width="2"/>
+            </svg>
+            </label>-->
+        </div>
+
+        <label class="steam-inputframe">
+            <h:inputTextarea a:placeholder="Schreibe etwas dazu" required="required" value="#{showData.remark}" class="steam-form"></h:inputTextarea>
+        </label>
+        
+
+    <h:commandButton class="steam-button" value="Serie hinzufügen" type="submit" action="#{addEvent.handleEvent(showData)}"></h:commandButton>
+    </h:form>
+</main>
+</h:body>
+</html>

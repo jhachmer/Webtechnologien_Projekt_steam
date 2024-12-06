@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="addEditSeriesModel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="title" />
+                <xs:element type="xs:int" name="numberOfSeasons" />
+                <xs:element type="xs:string" name="genre" />
+                <xs:element type="xs:string" name="provider" />
+                <xs:element type="xs:string" name="score" />
+                <xs:element type="xs:string" name="remark" />
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

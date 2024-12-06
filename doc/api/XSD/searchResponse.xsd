@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="searchModel">
+        <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Series">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="streamedBy" type="xs:string" />
+                    <xs:element name="title" type="xs:string" />
+                    <xs:element name="genre" type="xs:string" />
+                    <xs:element name="numberOfSeasons" type="xs:int" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:schema>

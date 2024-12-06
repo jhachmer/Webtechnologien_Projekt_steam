@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de"
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Steam™ - Deine Serien auf einen Blick</title>
+        <meta charset="UTF-8"></meta>
+        <h:outputStylesheet name="style.css"/>
+        <h:outputScript name="script.js"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+    </h:head>
+    <h:body>
+        <aside class="steam-sidebar">
+            <h:link outcome="overview" class="steam-logo"><h:graphicImage library="images" name="steam_tm.png" /></h:link>
+            <button id="menubutton" onclick="toggleMenu();" class="steam-mobilemenu"><img src="resources/images/mobile.svg" alt="Menü"></img>
+            </button>
+            <div class="steam-navarea">
+                <div class="steam-avatar">
+                    <h:graphicImage class="steam-useravatar" library="images" name="default-avatar.svg" />
+                    <span class="steam-username"> #{loginData.username} </span>
+                </div>
+                <nav class="steam-mainnavi">
+                    <h:form>
+                        <ul>
+                            <li><h:commandLink action="#{navigationController.moveToOverview}" value="Meine Serien"></h:commandLink></li>
+                            <li><h:commandLink action="#{navigationController.moveToSearch}" value="Serien suchen"></h:commandLink></li>
+                            <li><h:commandLink action="#{navigationController.moveToAdd}" value="Serie hinzufügen"></h:commandLink></li>
+                        </ul>
+                    </h:form>    
+                </nav>
+            </div>
+        </aside>
+        <main class="steam-main">
+            <h1>Deine Serien auf einen Blick</h1>
+            <div class="steam-showframe">
+                <div>
+                        <ui:repeat var="rating" value="#{overviewData.ratingList}" varStatus="status">
+                            <div class="steam-showboxexp">
+                                <div class="steam-overlay">
+                                    <h2 class="steam-showtitel">#{rating.ratedSeries.title}</h2>
+                                    <div class="steam-showinfow">
+                                        <div> <h:outputText value= "Genre: #{rating.ratedSeries.genre} · Anzahl Staffeln:  #{rating.ratedSeries.numberOfSeasons}
+                                                            &lt;br /&gt; Gestreamt auf: #{rating.ratedSeries.streamedBy}
+                                                            &lt;br /&gt; Score: #{rating.score}
+                                                            &lt;br /&gt; Remark: #{rating.remark}" escape="false"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                </div>
+            </div>
+        </main>
+    </h:body>
+</html>

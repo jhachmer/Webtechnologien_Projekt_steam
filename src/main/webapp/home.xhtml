@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+<h:head>
+    <meta charset="UTF-8"></meta>
+    <title>Steam™ - Start</title>
+    <h:outputStylesheet name="style.css"/>
+    <h:outputScript name="script.js"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+</h:head>
+<h:body class="home">
+    <a class="steam-intro" href="#"><h:graphicImage library="images" name="steam_tm.png" alt="Steam™ Logo"/></a>
+<div class="has-new-account">Sie haben sich erfolgreich registriert. Sie können sich nun mit Ihren Benutzerdaten einloggen.</div>
+
+<h:form id="login" class="steam-fieldset">
+    <label class="steam-inputframe">
+        <h:inputText id="username" a:placeholder="Username" required="required" class="steam-form" value="#{loginData.username}"></h:inputText>
+    </label>
+    <label class="steam-inputframe">
+        <h:inputSecret id="password" a:placeholder="Passwort" required="required" class="steam-form" value="#{loginData.password}"></h:inputSecret>
+    </label>
+    <h:commandButton class="steam-button" value="Anmelden" type="submit" action="#{loginEvent.handleEvent(loginData)}"></h:commandButton>
+    <div class="steam-info register-account">Noch kein Konto? <h:link value = "Registrieren" outcome="register" /></div>
+</h:form>
+</h:body>
+</html>

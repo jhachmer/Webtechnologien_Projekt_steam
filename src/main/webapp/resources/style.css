@@ -1,0 +1,508 @@
+* {
+    font-family: 'Jost', sans-serif;
+}
+html {
+    height: 100%;
+}
+body {
+    background: linear-gradient(306deg, rgba(47, 47, 56, 1) 0%, rgba(9, 9, 14, 1) 21%, rgba(64, 68, 71, 1) 80%, rgba(52, 52, 52, 1) 100%) fixed;
+    max-height: 100%;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+body.home {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 150px;
+}
+
+#javax_faces_developmentstage_messages{
+    display: block;
+    text-align: center;
+}
+a {
+    color: #ffd000;
+}
+/** Form **/
+.steam-form {
+    background-color: rgba(138, 138, 138, 0.15);
+    padding: 15px;
+    width: 100%;
+    transition: border-color .2s, background-color .2s;
+    display: block;
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-bottom-color: #ffd000 !important;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+}
+.steam-form:hover {
+    border-color: #ffd000 !important;
+}
+.steam-form:focus {
+    background-color: rgba(138, 138, 138, 0.45);
+}
+.steam-form::placeholder,
+.steam-form::-moz-placeholder {
+    color: #ffffff !important;
+}
+textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+.steam-logo {
+    display: inline-block;
+    padding: 25px;
+}
+.steam-logo img {
+    max-width: 100%;
+}
+.steam-inputframe {
+    position: relative;
+    margin-bottom: 25px;
+    display: block;
+}
+.steam-inputframe.halfinput {
+    width: calc(50% - 5px);
+    display: inline-block;
+    float: left;
+}
+.steam-halfinputs label:nth-of-type(odd) {
+    margin-right: 5px;
+}
+.steam-halfinputs label:nth-of-type(even) {
+    margin-left: 5px;
+}
+.steam-inputblock {
+    overflow: auto;
+}
+.steam-fieldset {
+    padding: 25px;
+    text-align: center;
+}
+.steam-button {
+    padding: 10px 17px;
+    border: 1px solid #ffd000;
+    text-transform: uppercase;
+    font-size: 25px;
+    min-width: 200px;
+    background-color: transparent;
+    color: #ffd000;
+    transition: all .2s;
+    cursor: pointer;
+}
+.steam-button:hover, .steam-button:focus {
+    background-color: red;
+    color: black;
+}
+.steam-info {
+    margin-top: 35px;
+    color: white;
+    font-style: italic;
+}
+
+.has-new-account,
+body.new-account .steam-info.register-account {
+    display: none;
+}
+body.new-account .has-new-account {
+    display: block;
+    background-color: red;
+    margin: 25px 25px 0 25px;
+    padding: 10px;
+    font-size: 20px;
+    font-size: 20px;
+
+}
+#user-ratings{
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 50px;
+}
+/** Sidebar **/
+.steam-sidebar {
+    width: 350px;
+    background-color: #17181d;
+    position: fixed;
+    margin-right: 25px;
+}
+.steam-main, .steam-sidebar {
+    min-height: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.steam-mainnavi ul {
+    list-style: none;
+    padding: 0;
+}
+.steam-mainnavi li:not(:last-of-type) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+.steam-mainnavi li a {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/** Main **/
+.steam-main {
+    color: white;
+    margin-left: 350px;
+}
+
+[class^="steam-star"] {
+    width: 25px;
+}
+.steam-star-active-empty {
+    stroke: #ffcc00;
+    fill: none;
+}
+.steam-star-active-full {
+    stroke: #ffcc00;
+    fill: #ffcc00;
+}
+.steam-star-inactive {
+    fill: none;
+    stroke: #a7a7a7;
+}
+h1 {
+    display: inline-block;
+}
+.steam-showtitle {
+    display: inline-block;
+    margin: 0;
+    font-size: 2rem;
+    transition: font-size .5s;
+}
+td {
+    padding: 0;
+    vertical-align: top;
+}
+.steam-showboxexp {
+    width: 33%;
+    height: 350px;
+    display: inline-block;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.steam-addshow {
+    border: 1px solid #ffd000;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: rgba(14, 14, 14, 0);
+    font-size: 28px;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    transition: background-color .5s;
+}
+.steam-addshow:hover,
+.steam-addshow:focus {
+    background-color: rgba(14, 14, 14, 0.85);
+}
+.steam-addshow-inner img {
+    transition: all .5s;
+}
+.steam-addshow:hover .steam-addshow-inner img,
+.steam-addshow:focus .steam-addshow-inner img {
+    transform: rotate(90deg);
+}
+.steam-addshow-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.steam-addshowbutton {
+    max-width: 70px;
+    display: block;
+    margin: auto auto 15px auto;
+}
+.steam-overlay {
+    background-color: rgb(14, 14, 14);
+    margin-top: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: -22%;
+    padding: 9px;
+    transition: all .5s;
+    box-sizing: border-box;
+}
+.steam-showboxexp:hover .steam-overlay,
+.steam-showboxexp:focus .steam-overlay {
+    margin-bottom: 0;
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(14, 14, 14, 0.85) 78%, rgba(52, 52, 52, 0) 100%);
+}
+.steam-showboxexp:hover .steam-showtitle,
+.steam-showboxexp:focus .steam-showtitle {
+    font-size: 1.4rem;
+}
+.steam-showinfo {
+    opacity: 0;
+    transition: opacity .5s;
+}
+.steam-showboxexp:hover .steam-showinfo,
+.steam-showboxexp:focus .steam-showinfo {
+    opacity: 1;
+}
+
+a.steam-showlink {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.steam-rating-full,
+.steam-rating-empty {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: 3px;
+}
+.steam-rating-full {
+    background-image: url("graphics/star-full.png");
+}
+.steam-rating-empty {
+    background-image: url("graphics/star-empty.png");
+}
+.steam-rating {
+    display: inline-block;
+    margin-top: 15px;
+}
+.steam-useravatar {
+    width: 55px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 10px;
+}
+.steam-username {
+    color: #ffd000;
+    font-size: 25px;
+    line-height: 55px;
+    display: block;
+    text-align: center;
+}
+.steam-rating-box {
+    transform: scaleX(-1);
+    display: block;
+    height: 50px;
+    width: 250px;
+    position: relative;
+    margin-bottom: 25px;
+}
+.steam-rating-box input[type="radio"] {
+    display: none;
+}
+.steam-rating-box label svg {
+    width: 50px;
+}
+.steam-rating-box label {
+    position: absolute;
+    margin-right: 3px;
+    box-sizing: border-box;
+}
+.steam-genrebox label {
+    vertical-align: middle;
+    font-size: 23px;
+    width: calc(98% / 6);
+    display: inline-block;
+    cursor: pointer;
+    min-width: 150px;
+}
+.steam-genrebox label input {
+    vertical-align: middle;
+}
+.steam-rating-box label:hover svg,
+.steam-rating-box label:focus svg,
+.steam-rating-box label.steam-active svg,
+.steam-rating-box label:hover ~ label svg,
+.steam-rating-box label:focus ~ label svg,
+.steam-rating-box label.steam-active ~ label svg {
+    transition: all .5s;
+    fill: #ffcc00;
+    stroke: #ffcc00;
+    cursor: pointer;
+}
+label[for="five"] {
+    width: 100%;
+    left: 0;
+
+}
+label[for="four"] {
+    width: 80%;
+    left: 20%;
+}
+label[for="three"] {
+    width: 60%;
+    left: 40%;
+}
+label[for="two"] {
+    width: 40%;
+    left: 60%;
+}
+label[for="one"] {
+    width: 20%;
+    left: 80%;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border: 1px solid #ffd000;
+    background: rgba(138, 138, 138, 0.15);
+    cursor: pointer;
+}
+input[type="radio"] {
+    border-radius: 100%;
+}
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-image: url("images/check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+}
+.steam-intro img {
+    max-width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.steam-infonlock {
+    font-size: 1.5em;
+}
+
+.steam-mobilemenu {
+    display: none;
+}
+
+.steam-userrating {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+.steam-userrating .steam-user {
+    font-size: 26px;
+}
+@media only screen and (max-width: 1550px) {
+    .steam-showboxexp {
+        width: calc(50% - 5px);
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .steam-showboxexp {
+        width: 100%;
+        height: 450px;
+    }
+
+    .steam-userrating {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+@media only screen and (max-width: 1010px) {
+
+    .steam-mobilemenu {
+        display: inline;
+    }
+
+    .steam-sidebar {
+        width: 100%;
+        height: auto;
+        min-height: 50px !important;
+        padding: 5px !important;
+        margin: 0 !important;
+        top: 0;
+        z-index: 1;
+    }
+
+    .steam-logo img {
+        height: 35px;
+    }
+
+    .steam-overlay {
+        height: 60%;
+        margin-bottom: -15% !important;
+        background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(14, 14, 14, 0.85) 78%, rgba(52, 52, 52, 0) 100%);
+    }
+
+    .steam-showtitle {
+        font-size: 1.4rem;
+    }
+
+    .steam-showinfo {
+        opacity: 1;
+    }
+
+    .steam-main {
+        margin: 100px 0 0;
+        z-index: -1;
+    }
+
+    .steam-mobilemenu {
+        float: right;
+        padding: 25px;
+        border: 0;
+        display: inline-block;
+        background-color: transparent;
+        cursor: pointer;
+
+    }
+
+    .steam-mobilemenu img {
+        width: 35px;
+    }
+
+    .steam-navarea {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        margin-top: -500px;
+        z-index: -1;
+        background-color: rgba(23, 24, 29, 0.95);
+        left: 0;
+        transition: margin-top .5s, opacity .5s;
+        opacity: 0;
+    }
+
+    .showmobilemenu .steam-navarea {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/jost-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/jost-700.ttf') format('truetype');
+}
+#meldung{
+    background: #ffd000;
+    margin-top: 10px;
+    font-size: 20px;
+}
